@@ -63,11 +63,7 @@ export class ContainerProfileComponent implements OnInit {
     sub.on('event', (data: Event<0>) => {
       const parsedData = jsonStringToObject(data.content);
 
-      this._img$.next(
-        this._img$.value === '' || parsedData.picture === undefined
-          ? `https://api.dicebear.com/5.x/identicon/svg?seed=${data.id}`
-          : parsedData.picture,
-      );
+      this._img$.next(parsedData.picture ?? `https://api.dicebear.com/5.x/identicon/svg?seed=${data.id}`);
       this.form.patchValue({
         name: parsedData.name ?? `anon${data.pubkey.slice(0, 4)}`,
         about: parsedData.about ?? '',

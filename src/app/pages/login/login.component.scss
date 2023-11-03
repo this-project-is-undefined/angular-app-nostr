@@ -1,7 +1,7 @@
 :host {
   @apply flex justify-center items-center flex-col gap-y-[24px];
   @apply min-h-screen w-full;
-  background-color: #0d030e;
+  @apply bg-[#1e0529];
 
   .chip-icons {
     @apply w-6 h-6;
@@ -29,13 +29,6 @@
   .example-chip-list {
     width: 100%;
   }
-  .button {
-    background-color: #70257a;
-    color: #fafcfc;
-  }
-  .mat-form-field.appearanceoutline {
-    color: #70257a;
-  }
   .textarea {
     color: #fafcfc;
     &::placeholder {
@@ -44,7 +37,6 @@
   }
   /* styles.css or login.component.css */
   .custom-mat-form-field {
-    background-color: #160617; /* replace #yourColor with your desired color */
     color: #fafcfc; /* replace #yourColor with your desired color */
   }
 

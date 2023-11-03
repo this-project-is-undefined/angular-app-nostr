@@ -29,8 +29,8 @@ $light-theme: mat.define-light-theme(
   )
 );
 
-@include mat.all-component-themes($light-theme);
+@include mat.all-component-colors($dark-theme);
 
 .dark-mode {
-  @include mat.all-component-colors($dark-theme);
+  @include mat.all-component-themes($light-theme);
 }

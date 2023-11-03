@@ -1,4 +1,5 @@
 .mat-mdc-card {
   position: relative;
-  background-color: #0d030e;
+  @apply bg-[#1e0529];
+
 }

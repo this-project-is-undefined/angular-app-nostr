@@ -105,7 +105,7 @@ module.exports = {
           500: '#2685CA',
         },
         back: '#0D030E',
-        purpleBox: '#160617',
+        purpleBox: '#450070',
         whiteLetter: '#FAFCFC',
         grayLetter: '#A8A8A8',
         purpleAccent: '#70257A',
