@@ -1,52 +1,72 @@
 <div
   *ngIf="(step$ | async) === 0"
-  class="flex flex-col items-center gap-y-4 p-6 mat-elevation-z10 rounded-xl w-full max-w-md">
+  class="flex flex-col items-center gap-y-5 px-10 py-7 mat-elevation-z10 w-full max-w-md rounded-2xl bg-purpleBox text-whiteLetter">
   <span class="text-2xl font-medium">Login</span>
   <span>So far it is only possible to log in with extension</span>
-  <button (click)="start()" mat-flat-button color="accent">Enter with extension</button>
+  <button (click)="start()" class="button" mat-flat-button>Enter with extension</button>
 </div>
 <div
   *ngIf="(step$ | async) === 1"
-  class="flex flex-col items-center gap-y-4 p-6 mat-elevation-z10 rounded-xl w-full max-w-md">
+  class="flex flex-col items-center gap-y-4 px-10 py-7 mat-elevation-z10 rounded-xl w-full max-w-md bg-purpleBox text-whiteLetter">
   <span class="text-2xl font-medium">Tell us about you</span>
   <span>Let the world know who you are</span>
-  <div class="flex flex-col w-full">
-    <mat-form-field class="w-full" appearance="outline">
-      <mat-label>Enter your name</mat-label>
-      <input matInput placeholder="John Doe" [formControl]="form.controls.name" required />
+  <div class="flex flex-col w-full text-whiteLetter border-purpleAccent bg-transparent">
+    <mat-form-field class="w-full appearanceoutline" appearance="outline">
+      <mat-label class="text-grayLetter" class="text-grayLetter">Enter your name</mat-label>
+      <input
+        matInput
+        class="placeholder-grayLetter text-whiteLetter textarea"
+        placeholder="John Doe"
+        [formControl]="form.controls.name"
+        required />
     </mat-form-field>
     <mat-form-field class="w-full" appearance="outline">
-      <mat-label>Enter your description</mat-label>
-      <textarea [formControl]="form.controls.description" matInput placeholder="What a beatiful day"></textarea>
+      <mat-label class="text-grayLetter">Enter your description</mat-label>
+      <textarea
+        [formControl]="form.controls.description"
+        class="placeholder-grayLetter text-whiteLetter textarea"
+        matInput
+        placeholder="What a beatiful day"></textarea>
     </mat-form-field>
-    <button class="self-end" (click)="nameDescription()" mat-flat-button color="accent">Next</button>
+    <button class="self-end button" (click)="nameDescription()" mat-flat-button>Next</button>
   </div>
 </div>
+
 <div
   *ngIf="(step$ | async) === 2"
-  class="flex flex-col items-center gap-y-4 p-6 mat-elevation-z10 rounded-xl w-full max-w-md">
+  class="flex flex-col items-center gap-y-4 px-10 py-7 mat-elevation-z10 rounded-xl w-full max-w-md bg-purpleBox text-whiteLetter">
   <span class="text-2xl font-medium">Any pics? 📸</span>
   <span>It's time show yourself, if you want to...</span>
-  <div class="flex flex-col w-full">
+  <div class="flex flex-col w-full text-whiteLetter border-purpleAccent bg-transparent">
     <mat-form-field class="w-full" appearance="outline">
-      <mat-label>Enter your profile picture url</mat-label>
-      <input matInput placeholder="example.com/file.png" [formControl]="form.controls.avatar" required />
+      <mat-label class="text-grayLetter">Enter your profile picture url</mat-label>
+      <input
+        matInput
+        class="placeholder-grayLetter text-whiteLetter textarea"
+        placeholder="example.com/file.png"
+        [formControl]="form.controls.avatar"
+        required />
     </mat-form-field>
     <mat-form-field class="w-full" appearance="outline">
-      <mat-label>Enter your banner url</mat-label>
-      <input matInput placeholder="example.com/banner.png" [formControl]="form.controls.cover" required />
+      <mat-label class="text-grayLetter">Enter your banner url</mat-label>
+      <input
+        matInput
+        class="placeholder-grayLetter text-whiteLetter textarea"
+        placeholder="example.com/banner.png"
+        [formControl]="form.controls.cover"
+        required />
     </mat-form-field>
-    <button class="self-end" (click)="sendPhotos()" mat-flat-button color="accent">Next</button>
+    <button class="self-end button" (click)="sendPhotos()" mat-flat-button color="accent">Next</button>
   </div>
 </div>
 <div
   *ngIf="(step$ | async) === 3"
-  class="flex flex-col items-center gap-y-4 p-6 mat-elevation-z10 rounded-xl w-full max-w-md">
+  class="flex flex-col items-center gap-y-4 px-10 py-7 mat-elevation-z10 rounded-xl w-full max-w-md bg-purpleBox text-whiteLetter">
   <span class="text-2xl font-medium">What do you want to see?</span>
   <span>Help us to find content that you interest</span>
-  <div class="w-full flex flex-col">
-    <mat-form-field class="example-chip-list">
-      <mat-label>Favorite topics</mat-label>
+  <div class="w-full flex flex-col bg-purpleBox">
+    <mat-form-field appearance="outline" class="example-chip-list">
+      <mat-label class="text-grayLetter">Favorite topics</mat-label>
       <mat-chip-grid #chipGrid aria-label="Topic selection">
         <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
           {{ fruit }}
@@ -56,6 +76,7 @@
         </mat-chip-row>
       </mat-chip-grid>
       <input
+        class="placeholder-grayLetter text-whiteLetter textarea"
         placeholder="Rockets, wine, cats..."
         #fruitInput
         [formControl]="fruitCtrl"
@@ -63,12 +84,15 @@
         [matAutocomplete]="auto"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="add($event)" />
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-        <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+      <mat-autocomplete #auto="matAutocomplete" class="text-whiteLetter" (optionSelected)="selected($event)">
+        <mat-option
+          class="bg-purpleSecondary text-whiteLetter"
+          *ngFor="let fruit of filteredFruits | async"
+          [value]="fruit">
           {{ fruit }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <button class="self-end" (click)="finish()" mat-flat-button color="accent">Finish</button>
+    <button class="self-end button" (click)="finish()" mat-flat-button color="accent">Finish</button>
   </div>
 </div>

@@ -8,6 +8,12 @@
 html {
   font-size: 16px;
 }
+.mat-mdc-form-field-flex {
+  background-color: #1d081f !important;
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #1d081f !important;
+}
 
 body {
   font-family: Roboto, 'Helvetica Neue';
@@ -111,9 +117,6 @@ body {
 * {
   box-sizing: border-box;
 }
-
-
-
 
 /* Angular Material & Tailwind conflicts */
 
