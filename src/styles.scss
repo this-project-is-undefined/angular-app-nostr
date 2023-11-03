@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Angular Material Custom Theme */
+@import './styles-material-theme.scss';
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Roboto, 'Helvetica Neue';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  @apply h-screen min-w-[100%] bg-gray-900;
+}
+
+// Typography
+// https://m2.material.io/design/typography/the-type-system.html#type-scale
+
+@layer base {
+  .text-headline1 {
+    font-weight: 300;
+    font-size: 6rem;
+    letter-spacing: -0.09375rem;
+    line-height: 1.2;
+  }
+
+  .text-headline2 {
+    font-weight: 300;
+    font-size: 3.75rem;
+    letter-spacing: -0.03125rem;
+    line-height: 1.2;
+  }
+
+  .text-headline3 {
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+
+  .text-headline4 {
+    font-weight: 400;
+    font-size: 2.125rem;
+    letter-spacing: 0.015625rem;
+    line-height: 1.4;
+  }
+
+  .text-headline5 {
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    line-height: 1.6;
+  }
+
+  .text-headline6 {
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.009375rem;
+    line-height: 1.6;
+  }
+
+  .text-subtitle1 {
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.009375rem;
+  }
+
+  .text-subtitle2 {
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.00625rem;
+  }
+
+  .text-body1 {
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.03125rem;
+  }
+
+  .text-body2 {
+    font-weight: 400;
+    font-size: 0.875rem;
+    letter-spacing: 0.015625rem;
+  }
+
+  .text-button {
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.078125rem;
+    text-transform: uppercase;
+  }
+
+  .text-caption {
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.025rem;
+  }
+
+  .text-overline {
+    font-weight: 400;
+    font-size: 0.625rem;
+    letter-spacing: 0.09375rem;
+    text-transform: uppercase;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+

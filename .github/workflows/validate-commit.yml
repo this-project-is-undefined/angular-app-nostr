@@ -1,0 +1,63 @@
+name: Validate commit
+
+on:
+  pull_request:
+    # Running when the PR is assigned as Ready for review or when the PR is updated
+    types:
+      - ready_for_review
+      - synchronize
+      - opened
+    branches: [main]
+
+# Definindo as etapas da pipeline
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: linters
+    container: node:16.20-alpine3.17
+    steps:
+      - run: npm ci
+      - run: npm run format
+  # Etapa de build
+  build:
+    runs-on: ubuntu-latest
+    name: build
+    container: node:16.20-alpine3.17
+    script:
+      - npm ci
+      - npm run build
+  # Etapa de teste
+  test:
+    runs-on: ubuntu-latest
+    name: test
+    container: node:16.20
+    # Variáveis de ambiente
+    env:
+      CI: 'true'
+      CHROME_BIN: '/usr/bin/google-chrome-stable'
+    # Definição das variáveis de ambiente
+    steps:
+      # Instalar dependências
+      - run: npm ci
+      # Instalar o Chrome
+      - run: apt-get update && apt-get install -y wget gnupg ca-certificates
+      - run: wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+      - run: echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+      - run: apt-get update && apt-get install -y google-chrome-stable
+      # Configurar usuário personalizado para o Chrome
+      - run: groupadd -r chrome && useradd -r -g chrome -G audio,video chrome
+      - run: mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome
+      - run: npm ci
+      # Executar os testes com o Karma
+      - run: npm run test
+  test_async:
+    runs-on: ubuntu-latest
+    name: test async
+    steps:
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: v1-npm-deps-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: v1-npm-deps-
+  # Definição das políticas de teste de cobertura

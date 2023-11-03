@@ -1,0 +1,88 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+/* Angular Material Custom Theme */
+
+$app-primary-palette: (
+  50: #e8f6ee,
+  100: #b2e5d4,
+  200: #7fd5ba,
+  300: #4dc49f,
+  400: #1ab485,
+  500: #00a76b,
+  600: #009d63,
+  700: #009359,
+  800: #008951,
+  900: #007f48,
+  950: #006d3b,
+  contrast: (
+    50: rgba(#006d3b, 0.87),
+    100: rgba(#006d3b, 0.87),
+    200: rgba(#006d3b, 0.87),
+    300: #e8f6ee,
+    400: #e8f6ee,
+    500: #e8f6ee,
+    600: #e8f6ee,
+    700: #e8f6ee,
+    800: #e8f6ee,
+    900: #e8f6ee,
+    950: #e8f6ee,
+    A100: rgba(#006d3b, 0.87),
+    A200: #e8f6ee,
+    A400: #e8f6ee,
+    A700: #e8f6ee,
+  ),
+);
+
+$app-secondary-palette: (
+  50: #e8eaf6,
+  100: #c5cae9,
+  200: #9fa8da,
+  300: #7986cb,
+  400: #5c6bc0,
+  500: #3f51b5,
+  600: #3949ab,
+  700: #303f9f,
+  800: #283593,
+  900: #1a237e,
+  950: #0d1c66,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    950: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
+);
+
+$app-primary: mat.define-palette($app-primary-palette, 900);
+$app-accent: mat.define-palette($app-secondary-palette, 500);
+
+$app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($app-theme);
+
+// Emit styles for MatButton based on `$app-theme`. Because the configuration
+// passed to `define-light-theme` omits typography, `button-theme` will not
+// emit any typography styles.
+@include mat.button-theme($app-theme);

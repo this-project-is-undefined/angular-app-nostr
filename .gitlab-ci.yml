@@ -1,0 +1,51 @@
+# Arquivo .gitlab-ci.yml
+
+# Definindo as etapas da pipeline
+stages:
+  - linters
+  - build
+  - test
+
+lint:
+  stage: linters
+  image: node:16.20-alpine3.17
+  script:
+    - npm ci
+    - npm run format
+# Etapa de build
+build:
+  stage: build
+  image: node:16.20-alpine3.17
+  script:
+    - npm ci
+    - npm run build
+# Etapa de teste
+test:
+  stage: test
+  image: node:16.20
+  # Variáveis de ambiente
+  variables:
+    CI: 'true'
+    CHROME_BIN: '/usr/bin/google-chrome-stable'
+  # Definição das variáveis de ambiente
+  before_script:
+    # Instalar dependências
+    - npm ci
+    # Instalar o Chrome
+    - apt-get update && apt-get install -y wget gnupg ca-certificates
+    - wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+    - apt-get update && apt-get install -y google-chrome-stable
+
+    # Configurar usuário personalizado para o Chrome
+    - groupadd -r chrome && useradd -r -g chrome -G audio,video chrome
+    - mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome
+  script:
+    - npm ci
+    # Executar os testes com o Karma
+    - npm run test
+  cache:
+    paths:
+      - node_modules/
+      - /home/gitlab-runner/.npm/
+# Definição das políticas de teste de cobertura
