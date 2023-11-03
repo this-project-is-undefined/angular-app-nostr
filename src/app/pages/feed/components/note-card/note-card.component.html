@@ -1,1 +1,32 @@
-<p>note-card works!</p>
+<mat-card>
+  <mat-card-content>
+    <div class="flex flex-col gap-y-4">
+      <div class="flex gap-x-2">
+        <img
+          *ngIf="metadata$ | async as metadata"
+          [src]="metadata.picture"
+          alt="profile picture"
+          class="z-0 h-10 w-10 rounded-full" />
+        <div *ngIf="metadata$ | async as metadata" class="flex flex-col justify-start">
+          <span class="text-base font-medium">{{ metadata.name }}</span>
+          <span class="text-xs"> {{ event.created_at * 1000 | date: 'short' }}</span>
+        </div>
+      </div>
+      <span class="break-words">{{ getLinkandText(event.content).text }}</span>
+      <video
+        *ngIf="
+          getLinkandText(event.content).link.endsWith('.mp4') || getLinkandText(event.content).link.endsWith('.mov')
+        "
+        [src]="getLinkandText(event.content).link"></video>
+      <img
+        class="rounded-lg"
+        alt="Image"
+        [src]="getLinkandText(event.content).link"
+        *ngIf="
+          getLinkandText(event.content).link.endsWith('.jpg') ||
+          getLinkandText(event.content).link.endsWith('.png') ||
+          getLinkandText(event.content).link.endsWith('.jpeg')
+        " />
+    </div>
+  </mat-card-content>
+</mat-card>

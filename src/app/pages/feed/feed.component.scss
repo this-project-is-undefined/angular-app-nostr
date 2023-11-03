@@ -1,4 +1,6 @@
-.container {
-    @apply p-6 w-full;
-    @apply flex
+:host {
+    @apply w-screen flex;
+
+    @apply gap-x-8;
+    @apply m-5;
 }

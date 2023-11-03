@@ -10,13 +10,13 @@ import { RELAYS } from 'src/app/constants/relays';
 
 export const jsonStringToObject = (
   jsonString: string,
-): { name?: string; banner?: string; picture?: string; description?: string } => {
+): { name?: string; banner?: string; picture?: string; about?: string } => {
   try {
     const jsonObject = JSON.parse(jsonString) as {
       name?: string;
       banner?: string;
       picture?: string;
-      description?: string;
+      about?: string;
     };
     return jsonObject;
   } catch (error) {
@@ -41,7 +41,7 @@ export class ContainerProfileComponent implements OnInit {
 
   public readonly form = this._fb.group({
     name: [''],
-    description: [''],
+    about: [''],
     avatar: [''],
     cover: [''],
     npub: [''],
@@ -71,7 +71,7 @@ export class ContainerProfileComponent implements OnInit {
       );
       this.form.patchValue({
         name: parsedData.name ?? `anon${data.pubkey.slice(0, 4)}`,
-        description: parsedData.description ?? '',
+        about: parsedData.about ?? '',
         avatar: parsedData.picture ?? `https://api.dicebear.com/5.x/identicon/svg?seed=${data.id}`,
         cover: parsedData.banner ?? '',
         npub: data.pubkey,

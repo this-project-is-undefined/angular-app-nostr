@@ -109,7 +109,7 @@ export default class LoginComponent {
     const _baseEvent = await window.nostr.signEvent({
       kind: 0,
       tags: [],
-      content: `{"name":"${values.name}","banner":"${values.cover}", "description":"${values.description}","picture":"${values.avatar}"}`,
+      content: `{"name":"${values.name}","banner":"${values.cover}", "about":"${values.description}","picture":"${values.avatar}"}`,
       created_at: Math.round(Date.now() / 1000),
     });
     console.log(Math.round(Date.now() / 1000));

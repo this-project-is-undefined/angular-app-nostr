@@ -45,7 +45,7 @@
   <span class="text-2xl font-medium">What do you want to see?</span>
   <span>Help us to find content that you interest</span>
   <div class="w-full flex flex-col">
-    <mat-form-field class="example-chip-list">
+    <mat-form-field class="example-chip-list" appearance="outline">
       <mat-label>Favorite topics</mat-label>
       <mat-chip-grid #chipGrid aria-label="Topic selection">
         <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
