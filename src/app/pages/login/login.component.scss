@@ -1,32 +1,55 @@
-:host{
-    @apply flex justify-center items-center flex-col gap-y-[24px];
-    @apply min-h-screen w-full;
+:host {
+  @apply flex justify-center items-center flex-col gap-y-[24px];
+  @apply min-h-screen w-full;
+  background-color: #0d030e;
 
-    .chip-icons {
-        @apply w-6 h-6;
-    }
+  .chip-icons {
+    @apply w-6 h-6;
+  }
 
-    .tile-custom{
-        @apply cursor-pointer;
-        @apply rounded-md;
-        @apply transition-all;
-        @apply uppercase;
-        &:hover{
-            @apply opacity-80;
-        }
+  .tile-custom {
+    @apply cursor-pointer;
+    @apply rounded-md;
+    @apply transition-all;
+    @apply uppercase;
+    &:hover {
+      @apply opacity-80;
     }
- 
-    .icon{
-        @apply self-center;
-        @apply w-16 h-16;
-        font-size: 4rem;
-        @apply text-slate-100;
+  }
+
+  .icon {
+    @apply self-center;
+    @apply w-16 h-16;
+    font-size: 4rem;
+    @apply text-slate-100;
+  }
+  .grid-layout-custom {
+    width: calc((25% - 0.75px) * 3 + 2px);
+  }
+  .example-chip-list {
+    width: 100%;
+  }
+  .button {
+    background-color: #70257a;
+    color: #fafcfc;
+  }
+  .mat-form-field.appearanceoutline {
+    color: #70257a;
+  }
+  .textarea {
+    color: #fafcfc;
+    &::placeholder {
+      color: #a8a8a8;
     }
-    .grid-layout-custom{
-        width: calc((25% - 0.75px) * 3 + 2px);
-    }
-    .example-chip-list {
-        width: 100%;
-      }
-      
+  }
+  /* styles.css or login.component.css */
+  .custom-mat-form-field {
+    background-color: #1d081f; /* replace #yourColor with your desired color */
+    color: #fafcfc; /* replace #yourColor with your desired color */
+  }
+
+  /* To change the placeholder color */
+  ::ng-deep .mat-form-field .mat-form-field-label {
+    color: #fafcfc; /* replace #yourColor with your desired color */
+  }
 }
