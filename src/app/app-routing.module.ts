@@ -15,6 +15,13 @@ const routes: Routes = [
     pathMatch: 'full',
     loadComponent: () => import('./pages/login/login.component'),
   },
+
+  {
+    title: $localize`UNDEFINED | feed` as string,
+    path: 'feed',
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/feed/feed.component'),
+  },
   {
     path: '**',
     redirectTo: 'login',

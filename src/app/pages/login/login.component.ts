@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 import type { EventTemplate } from 'nostr-tools';
 import { ApiClientService } from 'src/app/clients/api-client/api-client.service';
 
@@ -28,9 +29,11 @@ type Nostr = {
 export default class LoginComponent {
   private readonly _api = inject(ApiClientService);
   private readonly _destroyRef = inject(DestroyRef);
+  private readonly _router = inject(Router);
 
   public async login(): Promise<void> {
     const pbKey = await window.nostr.getPublicKey();
     this._api.create(pbKey).pipe(takeUntilDestroyed(this._destroyRef)).subscribe();
+    this._router.navigate(['/feed']);
   }
 }
