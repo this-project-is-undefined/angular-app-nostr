@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Angular Material Custom Theme */
-@import './styles-material-theme.scss';
+@import './themes/mat-palette.scss';
 
 html {
   font-size: 16px;
@@ -14,7 +14,7 @@ body {
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  @apply h-screen min-w-[100%] bg-gray-900;
+  @apply h-screen min-w-[100%];
 }
 
 // Typography
