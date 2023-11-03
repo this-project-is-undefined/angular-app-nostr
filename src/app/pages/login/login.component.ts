@@ -20,6 +20,7 @@ import { getEventHash, SimplePool } from 'nostr-tools';
 import type { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { fader } from 'src/app/animations/fader';
 import { ApiClientService } from 'src/app/clients/api-client/api-client.service';
 import { RELAYS } from 'src/app/constants/relays';
 
@@ -40,6 +41,7 @@ type Nostr = {
   styleUrls: ['./login.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fader],
   imports: [
     MatFormFieldModule,
     MatCardModule,
@@ -90,15 +92,21 @@ export default class LoginComponent {
     );
   }
 
-  public async login(): Promise<void> {
-    const pbKey = await window.nostr.getPublicKey();
-    this._api.create(pbKey).pipe(takeUntilDestroyed(this._destroyRef)).subscribe();
+  public async start(): Promise<void> {
     this._step$.next(1);
-
-    this._router.navigate(['/feed']);
   }
 
-  public async sign(): Promise<void> {
+  public async nameDescription(): Promise<void> {
+    this._step$.next(2);
+  }
+
+  public sendPhotos(): void {
+    this._step$.next(3);
+  }
+
+  public async finish(): Promise<void> {
+    const pbKey = await window.nostr.getPublicKey();
+    this._api.create(pbKey).pipe(takeUntilDestroyed(this._destroyRef)).subscribe();
     const values = this.form.value;
     const _baseEvent = await window.nostr.signEvent({
       kind: 0,
@@ -123,7 +131,7 @@ export default class LoginComponent {
       let isCleared = false;
       for await (const _req of this._pool.publish(RELAYS, event)) {
         if (isCleared === false) {
-          console.log('FIINISH');
+          this._router.navigate(['/feed']);
           isCleared = true;
         }
       }
