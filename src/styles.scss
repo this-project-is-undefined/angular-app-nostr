@@ -114,3 +114,21 @@ body {
 
 
 
+
+/* Angular Material & Tailwind conflicts */
+
+.mdc-notched-outline__notch {
+  border-right: none;
+}
+
+.mat-mdc-text-field-wrapper {
+  padding-right: 2px !important;
+}
+
+.mdc-button__label {
+  @apply px-4;
+}
+
+.mat-mdc-tab.mdc-tab {
+  flex-grow: 1 !important;
+}
