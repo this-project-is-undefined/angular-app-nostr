@@ -1,10 +1,10 @@
-<mat-card>
-  <mat-card-content>
-    <div class="flex flex-col items-center gap-y-3 relative">
-      <img [src]="form.value.cover" alt="Cover picture" class="absolute z-0 rounded-md h-1/2 w-full" />
+<mat-card class="max-w-xs bg-purpleBox">
+  <mat-card-content class="bg-purpleBox rounded-2xl">
+    <div class="flex flex-col items-center gap-y-3 relative h-96 bg-purpleBox text-whiteLetter">
+      <img [src]="form.value.cover" alt="Cover picture" class="absolute z-0 rounded-md h-16 w-full" />
       <img [src]="img$ | async" alt="Profile picture" class="w-24 rounded-full border-solid border-2 z-10 bg-white" />
-      <span>{{ form.value.name }}</span>
-      <span>{{ form.value.about }}</span>
+      <span class="text-2xl">{{ form.value.name }}</span>
+      <span class="w-full truncate px-5">npub: {{ form.value.npub }}</span>
       <span class="w-full truncate">{{ form.value.npub }}</span>
     </div>
   </mat-card-content>

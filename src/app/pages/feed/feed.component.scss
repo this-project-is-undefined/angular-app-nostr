@@ -1,6 +1,10 @@
 :host {
-    @apply w-screen flex;
-
-    @apply gap-x-8;
-    @apply m-5;
+  @apply flex justify-center gap-y-[24px];
+  @apply min-h-screen w-full;
+  background-color: #0d030e;
+}
+.container {
+  @apply p-6 w-1/2;
+  @apply flex;
+  background-color: #0d030e;
 }

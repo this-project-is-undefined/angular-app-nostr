@@ -7,10 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 import { RELAYS } from 'src/app/constants/relays';
 import { ContainerProfileComponent } from './components/container-profile/container-profile.component';
 import { NoteCardComponent } from './components/note-card/note-card.component';
+import { ContainerTopicsComponent } from './components/container-topics/container-topics.component';
 
 @Component({
   standalone: true,
-  imports: [ContainerProfileComponent, NoteCardComponent, NgFor, AsyncPipe],
+  imports: [ContainerProfileComponent, NoteCardComponent, ContainerTopicsComponent, NgFor, AsyncPipe],
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
