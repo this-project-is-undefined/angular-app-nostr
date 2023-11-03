@@ -5,6 +5,7 @@
   <div class="flex justify-center gap-y-[24px] gap-x-[30px] 2xl:gap-x-[200px] min-h-screen w-full">
     <app-container-profile class="max-w-xs block w-full"></app-container-profile>
     <div class="flex flex-col gap-y-5 bg-back">
+      <app-note-creator class="max-w-xl block w-full"></app-note-creator>
       <app-note-card
         *ngFor="let event of events$ | async"
         class="max-w-lg 2xl:max-w-2xl block w-full bg-back"

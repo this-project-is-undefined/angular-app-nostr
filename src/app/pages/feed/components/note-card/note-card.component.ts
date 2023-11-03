@@ -64,7 +64,6 @@ export class NoteCardComponent implements OnInit {
 
     let dataObj = new Object() as any;
     sub.on('event', (data: Event<0>) => {
-      console.log(data);
       dataObj = jsonStringToObject(data.content);
       this._metadata$.next(dataObj);
     });
