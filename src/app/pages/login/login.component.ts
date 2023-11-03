@@ -20,7 +20,6 @@ import { getEventHash, SimplePool } from 'nostr-tools';
 import type { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { fader } from 'src/app/animations/fader';
 import { ApiClientService } from 'src/app/clients/api-client/api-client.service';
 import { RELAYS } from 'src/app/constants/relays';
 
@@ -41,7 +40,6 @@ type Nostr = {
   styleUrls: ['./login.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fader],
   imports: [
     MatFormFieldModule,
     MatCardModule,
