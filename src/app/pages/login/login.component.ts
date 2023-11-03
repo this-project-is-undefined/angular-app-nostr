@@ -112,7 +112,6 @@ export default class LoginComponent {
       content: `{"name":"${values.name}","banner":"${values.cover}", "about":"${values.description}","picture":"${values.avatar}"}`,
       created_at: Math.round(Date.now() / 1000),
     });
-    console.log(Math.round(Date.now() / 1000));
 
     try {
       const pubkey = await window.nostr.getPublicKey();

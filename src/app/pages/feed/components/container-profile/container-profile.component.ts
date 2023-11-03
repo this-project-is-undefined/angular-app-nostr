@@ -62,7 +62,6 @@ export class ContainerProfileComponent implements OnInit {
 
     sub.on('event', (data: Event<0>) => {
       const parsedData = jsonStringToObject(data.content);
-      console.log(parsedData.name ?? `anon${data.pubkey.slice(0, 4)}`);
 
       this._img$.next(
         this._img$.value === '' || parsedData.picture === undefined
